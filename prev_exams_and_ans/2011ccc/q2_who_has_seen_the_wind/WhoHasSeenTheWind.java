@@ -5,7 +5,6 @@ import java.io.InputStreamReader;
 public class WhoHasSeenTheWind {
 
 	public static void main(String[] args) throws IOException {
-		// TODO Auto-generated method stub
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		int humidity = Integer.parseInt(br.readLine());
 		int timeLeft = Integer.parseInt(br.readLine());
