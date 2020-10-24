@@ -45,3 +45,23 @@ void search()
 	}
 	
 }
+
+int main()
+{
+	std::cin.sync_with_stdio(0);
+	std::cin.tie(0);
+	cin >> N;
+	int i;
+	while (N--)
+	{
+		cin >> i;
+		L[i]++;
+	}
+	cnt();
+	search();
+	cout << maxl << " " << nmax;
+
+
+	
+    return 0;
+}
