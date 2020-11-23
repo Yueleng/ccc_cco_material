@@ -39,7 +39,7 @@ public class EscapeRoomBacktrack {
                 System.out.println("yes");
                 return;
             }
-            getCordToCordsToTry(numToCords, aCord[0] * aCord[1], cordsToTry, isVisitedBefore);
+            getCordsToTry(numToCords, aCord[0] * aCord[1], cordsToTry, isVisitedBefore);
             
         }
         
@@ -47,7 +47,7 @@ public class EscapeRoomBacktrack {
 
     }
 
-    public static void getCordToCordsToTry(ArrayList<ArrayList<int[]>> numToCords, int numToSearch, LinkedList<int[]> cordsToTry, boolean[][] isVisitedBefore) {
+    public static void getCordsToTry(ArrayList<ArrayList<int[]>> numToCords, int numToSearch, LinkedList<int[]> cordsToTry, boolean[][] isVisitedBefore) {
 		if (numToCords.get(numToSearch) == null) {
 			return ;
 		} else {
