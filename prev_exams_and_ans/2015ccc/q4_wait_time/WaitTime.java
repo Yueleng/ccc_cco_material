@@ -41,7 +41,7 @@ public class WaitTime {
 				timeStamp += 1;
 			} else /* action equals W*/ {
 				timeStamp += Integer.parseInt(rowInfo[1]) - 1; // Why -1?
-			} 
+			}
 			
 		}
 		
