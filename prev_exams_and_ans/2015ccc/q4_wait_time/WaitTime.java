@@ -6,10 +6,10 @@ import java.util.*;
 
 public class WaitTime {
 	
-	// <friendId, [waitTime, indicator]}>
+	// <friendId, [waitTime, indicator(-1 or timeStamp)]}>
 	// indicator: -1 if all cleared up; timeStamp if not cleared up;
 	private static HashMap <String, int[]> waitTimeTable = new HashMap<>();
-	private static ArrayList<String> friendArray = new ArrayList<>();
+	// private static ArrayList<String> friendArray = new ArrayList<>();
 	public static void main(String[] args) throws IOException {
 		Scanner sc = new Scanner(System.in);
 		int rows = Integer.parseInt(sc.nextLine());
@@ -24,7 +24,7 @@ public class WaitTime {
 				if (!waitTimeTable.containsKey(friendId) /* new friend */) {
 					int[] friendInfo = {0, timeStamp};
 					waitTimeTable.put(friendId, friendInfo);
-					friendArray.add(friendId);
+					// friendArray.add(friendId);
 				} else /* old friend */ {
 					// old friend, either "S" to complete conversation 
 					//                 or "R" to start a new conversation
@@ -45,11 +45,13 @@ public class WaitTime {
 			
 		}
 		
-		Collections.sort(friendArray);
-		for (String friendId: friendArray) {
+		// Collections.sort(friendArray);
+
+		Object[] friendArray = waitTimeTable.keySet().toArray();
+		Arrays.sort(friendArray);
+		for (Object friendId: friendArray) {
 			int[] friendInfo = waitTimeTable.get(friendId);
 			System.out.println(friendId + " " + (friendInfo[1] == -1 ? friendInfo[0] : -1));
 		}
 	}
-
 }
