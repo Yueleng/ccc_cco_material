@@ -1,7 +1,8 @@
+package tutor_week4;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStreamReader;
-import java.util.HashMap;
 
 public class BoringBusiness {
 	private static boolean[][] grid = new boolean[200][401];
@@ -32,34 +33,6 @@ public class BoringBusiness {
 	}
 
 	public static boolean driveTo(String direction, int steps) {
-		grid[-currentPos[1]-1][currentPos[0] + 200] = true;
-		boolean isSafe = true;
-
-		HashMap<String, int[]> moveTrans = new HashMap<>();
-
-		moveTrans.put("l", new int[] {0, -1});
-		moveTrans.put("r", new int[] {0, 1});
-		moveTrans.put("d", new int[] {1, 0});
-		moveTrans.put("u", new int[] {-1, 0});
-
-
-		for (int i = 1; i <= steps; i++) {
-			if (grid[-currentPos[1]-1 + moveTrans.get(direction)[0] * i][currentPos[0] + 200 + moveTrans.get(direction)[1] * i] == false) 
-				grid[-currentPos[1]-1 + moveTrans.get(direction)[0] * i][currentPos[0] + 200 + moveTrans.get(direction)[1] * i] = true;
-			else {
-				isSafe = false;
-				break;
-			}
-				
-		}
-		
-		currentPos[0] += steps * moveTrans.get(direction)[1];
-		currentPos[1] -= steps * moveTrans.get(direction)[0];
-		return isSafe;
-
-	}
-
-	public static boolean driveTo2(String direction, int steps) {
 		grid[-currentPos[1]-1][currentPos[0] + 200] = true;
 		boolean isSafe = true;
 		switch (direction) {
@@ -117,6 +90,4 @@ public class BoringBusiness {
 				return isSafe;
 		}
 	}
-
-	
 }

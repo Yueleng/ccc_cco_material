@@ -1,45 +1,45 @@
-import java.io.IOException;
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-// import java.util.Arrays;
+package demo3;
 
-public class FavouriteTimes {
+import java.io.IOException;
+import java.util.Scanner;
+import java.util.ArrayList;
+
+public class FavouriteTime {
+	
 	private static ArrayList<int[]> allPossibleTime;
 	public static void main(String[] args) throws IOException {
-		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-		int passedMinutes = Integer.parseInt(br.readLine());
+		Scanner sc = new Scanner(System.in);
+		int passedMinutes = Integer.parseInt(sc.nextLine());
 		int passedDays = passedMinutes / 720;
 		int observations = 0;
+		
 		allPossibleTime = generateAllPossibleTime();
 		
-//		print out the allPossibleTime
-//		for (int[] time: allPossibleTime) {
-//			System.out.println(time[0] + ":" + time[1]);
-//		}
-		
 		observations += ( passedDays ) * allPossibleTime.size();
-		passedMinutes = passedMinutes - passedDays * 720;
+		passedMinutes = passedMinutes - passedDays * 720; // passedMinutes % 720
 		
 		for (int[] time: allPossibleTime) {
 			if (determineTimeDifference(time) <= passedMinutes) {
 				observations += 1;
 			}
 		}
+		
 		System.out.println(observations);
+		
 	}
 	
-	public static int determineTimeDifference(int[] end) {
+	public static int determineTimeDifference(int[] favouriteTime) {
 //		difference between 12:00 and end
 		int diffInMinutes = 0;
-		if (end[0] == 12)
-			end[0] = 0;
-		diffInMinutes = (end[0]) * 60 + end[1];
+		if (favouriteTime[0] == 12)
+			favouriteTime[0] = 0;
+		diffInMinutes = (favouriteTime[0]) * 60 + favouriteTime[1];
 		return diffInMinutes;
 	}
 	
 	public static ArrayList<int[]> generateAllPossibleTime() {
 		allPossibleTime = new ArrayList<>();
+		
 		for (int i = -4; i <= 4; i++) {
 			for (int j = 1; j <= 12; j++) {
 				if (j < 10) {
@@ -62,6 +62,8 @@ public class FavouriteTimes {
 				}
 			}
 		}
+		
 		return allPossibleTime;
 	}
+
 }
