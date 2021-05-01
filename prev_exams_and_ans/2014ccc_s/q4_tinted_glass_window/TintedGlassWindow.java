@@ -55,8 +55,8 @@ public class TintedGlassWindow {
         // int[] xPos = new int[xsUnique[xsUnique.length-1] + 1];
         // int[] yPos = new int[ysUnique[ysUnique.length-1] + 1];
 
-        TreeMap<Integer, Integer> xPos = new TreeMap<>();
-        TreeMap<Integer, Integer> yPos = new TreeMap<>();
+        Map<Integer, Integer> xPos = new TreeMap<>();
+        Map<Integer, Integer> yPos = new TreeMap<>();
 
         for (int i = 0; i < xsUnique.length; i++) {
             xPos.put(xsUnique[i], i);
