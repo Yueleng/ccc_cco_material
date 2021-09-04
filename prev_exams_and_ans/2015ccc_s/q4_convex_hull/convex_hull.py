@@ -76,12 +76,18 @@ def push(heap, item):
 K, N, M = map(int, input().split())
 
 # every element in routes is a dictionary
+# representation of the graph.
 routes = [{} for n in range(N)]
-for m in range(M):
+for m in range(M): # for (m = 0; m < M; m++)
     # every loop sets append (t,h) to 
     # routes[a-1][b-1] & routes[b-1][a-1]
     a, b, t, h = map(int, input().split())
-    routes[a-1].setdefault(b-1, []).append((t, h))
+
+    # routes[a-1] -> {}
+    # {}.setdefault(b-1,[]) -> ({} -> {b-1, []}) return []
+    # [].append((t,h)) -> [(t,h)]
+    # (t,h) # tuple
+    routes[a-1].setdefault(b-1, []).append((t, h)) # a-1: {b-1: [(t,h)]}
     routes[b-1].setdefault(a-1, []).append((t, h))
 
 # infinity to be large

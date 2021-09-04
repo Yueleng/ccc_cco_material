@@ -40,18 +40,31 @@ def push(heap, item):
 
 # Read K, N, M from file
 # K: Convex-hull thickness
-# N: how many points
-# M: how many routes
-K, N, M = map(int, input().split())
+# N: how many points, how many vertices
+# M: how many routes, how many edges
+
+
+# map(f, arr) -> for every element e in arr, we return f(e) and put back to arr
+# input().split(" ") -> ["10", "4", "7"];
+# map(int, ["10", "4", "7"]) -> [10, 4, 7]
+K, N, M = map(int, input().split(" "))
 
 # every element in routes is a dictionary
+# representation of the graph.
 routes = [{} for n in range(N)]
-for m in range(M):
+for m in range(M): # for (m = 0; m < M; m++)
     # every loop sets append (t,h) to 
     # routes[a-1][b-1] & routes[b-1][a-1]
+    # a: start island, b: arriving island, t: edge length, h: wear amount
     a, b, t, h = map(int, input().split())
-    routes[a-1].setdefault(b-1, []).append((t, h))
+
+    # routes[a-1] -> {}
+    # {}.setdefault(b-1,[]) -> ({} -> {b-1, []}) return []
+    # [].append((t,h)) -> [(t,h)]
+    # (t,h) # tuple
+    routes[a-1].setdefault(b-1, []).append((t, h)) # a-1: {b-1: [(t,h)]}
     routes[b-1].setdefault(a-1, []).append((t, h))
+    # api: routes[a][b] -> [(t,h)]
 
 # infinity to be large
 INF = 10**10
@@ -74,9 +87,9 @@ while que:
     if island[1] == q:
         min_time = island[0]
         break
-    if island[1:] in visited:
+    if island[1] in visited:
         continue
-    visited.add(island[1:])
+    visited.add(island[1])
 
     # all the neighbors of island[1]
     for destination in routes[island[1]]:
