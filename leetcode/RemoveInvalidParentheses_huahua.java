@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class RemoveInvalidParentheses {
+public class RemoveInvalidParentheses_huahua {
     public List<String> removeInvalidParentheses(String s) {
         int l = 0;
         int r = 0;
@@ -53,21 +53,15 @@ public class RemoveInvalidParentheses {
             if (i != start && s.charAt(i) == s.charAt(i - 1))
                 continue;
 
-            if (s.charAt(i) == '(') {
-                String curr = s;
-                curr = curr.substring(0, i) + curr.substring(i + 1, s.length());
-                if (l > 0)
-                    dfs(curr, i, l - 1, r, ans);
-
-            }
-
-            if (s.charAt(i) == ')') {
+            if (s.charAt(i) == '(' || s.charAt(i) == ')') {
                 String curr = s;
                 curr = curr.substring(0, i) + curr.substring(i + 1, s.length());
                 if (r > 0)
                     dfs(curr, i, l, r - 1, ans);
-            }
+                else if (l > 0)
+                    dfs(curr, i, l - 1, r, ans);
 
+            }
         }
 
     }
