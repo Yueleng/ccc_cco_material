@@ -2,18 +2,6 @@ import java.util.*;
 import java.io.*;
 
 public class CCC21S3 {
-  static class AudienceInfo {
-    public int p;
-    public int w;
-    public int d;
-
-    AudienceInfo(int p, int w, int d) {
-      this.p = p;
-      this.w = w;
-      this.d = d;
-    }
-  }
-
   // static class AudienceInfoComparator implements Comparator<AudienceInfo> {
   //   @Override
   //   public int compare(AudienceInfo audience1, AudienceInfo audience2) {
@@ -140,5 +128,18 @@ public class CCC21S3 {
 
   static String readLine() throws IOException {
     return br.readLine().trim();
+  }
+}
+
+
+class AudienceInfo {
+  public int p;
+  public int w;
+  public int d;
+
+  AudienceInfo(int p, int w, int d) {
+    this.p = p;
+    this.w = w;
+    this.d = d;
   }
 }
