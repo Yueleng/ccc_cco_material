@@ -1,3 +1,6 @@
+import java.util.ArrayList;
+import java.util.List;
+
 public class ExpressionAndOperator_ {
     private char[] num;
     private List<String> ans;
